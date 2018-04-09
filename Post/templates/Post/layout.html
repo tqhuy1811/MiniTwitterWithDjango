@@ -1,0 +1,27 @@
+{% load static %}
+<html lang="en">
+  <!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
+  <!-- <script type="text/javascript" src="{% static "js/jquery.js"    %}"></script> -->
+  <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+  <!-- <script type="text/javascript" src="{% static "js/likePost.js"%}"></script> -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DjangoBlogPost</title>
+</head>
+<body>
+    {% include 'Post/_navbar.html'%}  
+  <div class="ui container">
+
+    {% block content %}
+    {% endblock %}
+  </div>
+
+ 
+  <script> CKEDITOR.replace("content") </script>
+</body>
+
+
+</html>

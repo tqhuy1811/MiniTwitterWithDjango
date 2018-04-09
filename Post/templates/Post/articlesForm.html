@@ -1,0 +1,18 @@
+
+
+
+{% extends 'Post/layout.html' %}
+
+{%  block content %}  
+  <form method="POST" class="ui form" action="">
+    {% csrf_token %}
+    <div class="field">
+      <label>Title</label>
+      <input type="text" name="title"/>
+      <label> Content</label>
+      <textarea  rows="4" name="content" ></textarea>
+    </div>
+    <button type="submit" class="ui primary button">Create</button>
+  </form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+<div class="ui inverted menu">
+    <div class="header item">JustBlog</div>
+    <a class="item" href="/">Home</a>
+    <a class="item" href="/articles">Articles</a>
+    <div class="right menu">
+      {% if request.session.email %}
+        <a class="item" href="/create/article">Create</a>
+        <a class="item" href="/profile">{{request.session.email}}</a>
+        <a class="item" href="/logout">Logout</a>
+
+      {% else %}
+        <a class="item" href="/login">Login</a>
+        <a class="item" href="/signup">SignUp</a>
+      {% endif %}
+    </div>
+  </div>

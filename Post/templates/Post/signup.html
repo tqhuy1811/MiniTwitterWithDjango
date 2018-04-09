@@ -1,0 +1,18 @@
+{% extends 'Post/layout.html' %}
+
+{% block content %}
+
+    <form class="ui form" method="POST" action="">
+        {% csrf_token %}
+      <div class="field">
+        <label >Email</label>
+        <input type="email" name="email" class="form-control" />
+        <label>Password</label>
+        <input type="password" name="password" class="form-control"/>
+        <label>UserName</label>
+        <input type="text" name="username" class="form-control" />
+      </div>
+      <button type="submit" class="ui primary button">Submit</button>
+    </form>
+
+{% endblock %}

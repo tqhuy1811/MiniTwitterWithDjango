@@ -1,0 +1,47 @@
+{% extends 'Post/layout.html' %}
+
+
+{%  block content  %}
+<div class="ui text container">
+  <div class="description">{{blog.title}}</div>
+  <div class="header">{{blog.creator.username}}</div>
+  <div class="date">{{blog.dated_created}}</div>
+  <p>{{blog.body}}</p>
+
+
+  <div class="ui comments">
+    {% if request.session.email %}
+      <form method="POST" action="/post/comment/{{blog.id}}" class="ui reply form">
+        {% csrf_token %}
+        <div class="field">
+          <textarea name="body" rows="2" placeholder="Say something nice"></textarea>
+        </div>
+        <button type="submit" class="ui primary button">Add Comment</button>
+      </form>
+      {% else %}
+      <div class="ui medium text">
+        <p>You must <a href="/login">login </a> to comment</p>
+      </div>
+      {% endif %}
+      {% for comment in comments %}
+      <div class="ui card" style="margin-bottom: 5%">
+        <div class="comment">
+          <div class="content">
+            <a class="author">{{comment.creator.username}}</a>
+            <div class="metadata">
+              <span class="date">{{ comment.dated_created }}</span>
+            </div>
+            <div class="text" style="word-wrap: break-word;flex: inherit">
+              {{ comment.body }}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+
+
+
+
+{% endblock %}

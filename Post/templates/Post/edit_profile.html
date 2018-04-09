@@ -1,0 +1,25 @@
+{% extends 'Post/layout.html' %}
+
+{%  block content  %}
+  <form method="POST" enctype="multipart/form-data" class="ui form" action="">
+    {% csrf_token %}
+    
+    <div class="two fields">
+      <div class="field">
+        <label>Birthday</label>
+        <input name="birthday" value={{ profile.birthday }} class="date" type="date"/>
+      </div> 
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>Profile Picture</label>
+        <input name="profilePicture" type="file" />
+      </div>
+    </div>
+    <div class="field">    
+      <label>Bio</label>
+      <textarea name="bio" rows="4">{{profile.bio}}</textarea>
+    </div>
+    <button class="ui primary button">Update Profile</button>
+  </form>
+{% endblock %}

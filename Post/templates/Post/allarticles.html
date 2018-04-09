@@ -1,0 +1,39 @@
+{% extends 'Post/layout.html' %}
+
+{% block content %} 
+     <div class="ui center aligned grid">
+        <div class="ui feed" >
+          {% for blog in blogs %}
+          <div class="ui card" style="margin-top: 20px">        
+              <div class="content">
+                <div class="summary">
+                  <label class="header"><span>Author: </span>{{ blog.creator.username }}</label>
+              
+                  <div class="date">{{ blog.dated_created }}</div>
+                </div>  
+                <div class="description"><a class="" href="/article/{{blog.id}}">{{blog.title}}</a></div>
+                <div class="ui segment" style="word-wrap: break-word;flex: inherit">{{blog.body|truncatewords:30}}</div>
+                <div class="meta">
+                    <a id="like" href="/like/{{blog.id}}" class="like">
+                    {% if blog.totalLikes %}
+                      <i class="like icon"></i> {{ blog.totalLikes }} Likes
+                    {% else %}
+                      <i class="like icon"></i>  Likes
+                    {% endif %}
+                    </a>
+                    <a href="/article/{{blog.id}}" class="comment">
+                      {% if blog.totalComment %}
+                        <i class="comment icon"></i> {{ blog.totalComment }} comments
+                      {% else %}
+                        <i class="comment icon"></i>  comments
+                      {% endif %}
+                    </a>
+                </div>
+   
+              </div> 
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+{% endblock %}
